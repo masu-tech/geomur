@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-geomur-dev-03dc8-authRole",
+      "UnauthRoleArn": "arn:aws:iam::590183992455:role/amplify-geomur-dev-03dc8-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::590183992455:role/amplify-geomur-dev-03dc8-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-geomur-dev-03dc8-deployment",
+      "UnauthRoleName": "amplify-geomur-dev-03dc8-unauthRole",
+      "StackName": "amplify-geomur-dev-03dc8",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:590183992455:stack/amplify-geomur-dev-03dc8/cf1e1fd0-ffdc-11ee-a306-0eb438069961",
+      "AmplifyAppId": "d82gjb2rvarsy"
+    }
+  }
+}

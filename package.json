@@ -6,7 +6,21 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prettier": "npx prettier --write '**/*.tsx'",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --allow-empty"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
@@ -41,6 +55,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.34.1",
     "globals": "^15.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },

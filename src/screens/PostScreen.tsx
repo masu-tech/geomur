@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const LeaveScreen = () => {
+const PostScreen = () => {
   return (
     <View>
       <Text>投稿画面</Text>
@@ -9,4 +9,4 @@ const LeaveScreen = () => {
   );
 };
 
-export default LeaveScreen;
+export default PostScreen;

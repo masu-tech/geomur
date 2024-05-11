@@ -7,7 +7,7 @@ export const PostButton: React.FC = () => {
   const navigation = useNav();
 
   const handleLeavePress = () => {
-    navigation.navigate('Leave');
+    navigation.navigate('Post');
   };
 
   return (

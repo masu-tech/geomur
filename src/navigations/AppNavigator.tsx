@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
-import LeaveScreen from '@/screens/PostScreen';
+import PostScreen from '@/screens/PostScreen';
 
 const RootStack = createStackNavigator();
 
@@ -20,10 +20,11 @@ const AppNavigator = () => {
           screenOptions={{
             presentation: 'modal',
             headerShown: true,
+            headerTitle: 'メッセージを残す',
             headerLeftLabelVisible: false,
           }}
         >
-          <RootStack.Screen name="Leave" component={LeaveScreen} />
+          <RootStack.Screen name="Post" component={PostScreen} />
         </RootStack.Group>
       </RootStack.Navigator>
     </NavigationContainer>

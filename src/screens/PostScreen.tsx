@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, TextInput, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { API, graphqlOperation } from 'aws-amplify';
+import { createMessage } from '@/graphql/mutations';
+import { CreateMessageInput } from '@/API';
 import { useNav } from '@/hooks/useNav';
 import { Ionicons } from '@expo/vector-icons';
 import { ModalCloseButton } from '@/components/ModalCloseButton';
 import { validateStringLength } from '@/utils/TextUtils';
+import { getCurrentUserLocation } from '@/utils/LocationUtils';
 
 const PostScreen = () => {
   const MAX_MESSAGE_CHAR_NUM = 140;
@@ -49,10 +53,33 @@ const PostScreen = () => {
     setTags(newTags);
   };
 
-  const handleLeavePress = () => {
+  const postMessage = async (input: CreateMessageInput) => {
+    try {
+      const response = await API.graphql(graphqlOperation(createMessage, { input }));
+      return response;
+    } catch (error) {
+      console.error('Error creating message:', error);
+      throw error;
+    }
+  };
+
+  const handlePostPress = async () => {
     // TODO: 投稿処理をここに記述する
+    const location = await getCurrentUserLocation(); // <- 位置情報を取得
+    const now = new Date().toISOString();
+    const newMessage: CreateMessageInput = {
+      user_id: 'DammyUserId', // <- 現在のユーザーIDを取得
+      content: message,
+      tags: tags,
+      created: now,
+      updated: now,
+      longitude: location.longitude,
+      latitude: location.latitude,
+    };
+    await postMessage(newMessage);
     console.log('Message:', message);
     console.log('Tags:', tags);
+
     // 投稿が完了した後に、テキストエリアとタグをクリアする
     setMessage('');
     setTagInput('');
@@ -65,7 +92,7 @@ const PostScreen = () => {
     navigation.setOptions({
       headerRight: () => (
         <TouchableOpacity
-          onPress={handleLeavePress}
+          onPress={handlePostPress}
           disabled={!validateStringLength(message, MAX_MESSAGE_CHAR_NUM)}
           style={[
             styles.button,

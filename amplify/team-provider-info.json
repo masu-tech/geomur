@@ -10,6 +10,11 @@
       "StackName": "amplify-geomur-dev-03dc8",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:590183992455:stack/amplify-geomur-dev-03dc8/cf1e1fd0-ffdc-11ee-a306-0eb438069961",
       "AmplifyAppId": "d82gjb2rvarsy"
+    },
+    "categories": {
+      "api": {
+        "geomur": {}
+      }
     }
   }
 }

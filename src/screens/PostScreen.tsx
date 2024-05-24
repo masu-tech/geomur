@@ -56,15 +56,16 @@ const PostScreen = () => {
   const postMessage = async (input: CreateMessageInput) => {
     try {
       const response = await API.graphql(graphqlOperation(createMessage, { input }));
+      // TODO: 投稿成功通知を表示
       return response;
     } catch (error) {
       console.error('Error creating message:', error);
+      // TODO: 投稿失敗通知を表示
       throw error;
     }
   };
 
   const handlePostPress = async () => {
-    // TODO: 投稿処理をここに記述する
     const location = await getCurrentUserLocation(); // <- 位置情報を取得
     const now = new Date().toISOString();
     const newMessage: CreateMessageInput = {
@@ -77,8 +78,6 @@ const PostScreen = () => {
       latitude: location.latitude,
     };
     await postMessage(newMessage);
-    console.log('Message:', message);
-    console.log('Tags:', tags);
 
     // 投稿が完了した後に、テキストエリアとタグをクリアする
     setMessage('');

@@ -11,6 +11,9 @@ web-build/
 # vscode
 .vscode/
 
+# coverage
+coverage/*
+
 # Native
 *.orig.*
 *.jks

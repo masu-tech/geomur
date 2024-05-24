@@ -1,9 +1,11 @@
 # Geomur
 
 ## expo起動
+
 `npx expo start`
 
 ## ディレクトリ構成
+
 ```
 src
 ├── assets（アイコンや画像など）
@@ -33,7 +35,24 @@ src
 ├── types（型定義）
 │   ├── index.d.ts
 │   └── ...
-│
 tests
-├── ...
-``
+├── components
+├── screens
+├── utils
+├── e2e
+```
+
+## テスト
+
+#### ユニットテスト
+
+```sh
+npm test
+```
+
+#### E2Eテスト
+
+```sh
+npm run detox build --configuration ios.sim.debug
+npm run detox test --configuration ios.sim.debug
+```
